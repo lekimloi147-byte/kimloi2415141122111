@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity() {
     private fun thucHienKiemTra() {
         val ten = binding.edtTen.text.toString().trim()
         val soLuongStr = binding.edtSoLuong.text.toString().trim()
+
+
         binding.tvKetQua.text = ""
 
         if (ten.isEmpty()) {
@@ -38,12 +40,17 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Lỗi: Số lượng phải là số nguyên từ 1 đến 9!", Toast.LENGTH_SHORT).show()
             return
         }
-        binding.tvKetQua.text = "Xin chào $ten, số lượng: $soLuong"
+
+
+        val loai = if (soLuong < 5) "Ít" else "Nhiều"
+
+
+        binding.tvKetQua.text = "Xin chào $ten, số lượng: $soLuong - $loai"
     }
 
     private fun thucHienXoa() {
         binding.edtTen.setText("")
         binding.edtSoLuong.setText("")
-        binding.tvKetQua.text = ""
+        binding.tvKetQua.text = "" // Xóa sạch dữ liệu nhập, lỗi và nhãn mới
     }
 }
